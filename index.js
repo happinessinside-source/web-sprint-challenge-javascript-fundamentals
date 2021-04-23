@@ -29,13 +29,10 @@ myFunction();
     
 For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
 
-class summation {
-    constructor() {
-        this.number = 2
-
-        return summation
-    }
-}
+function Num(num1) {
+    const sumTask = 1 + 2
+    return sumTask
+};
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
 // Given this zoo data from around the United States, follow the instructions below. Use the specific array methods in the requests below to solve the problems.
@@ -94,10 +91,12 @@ The zoo is concerned about animals with a lower population count.
 Using lowPopulationAnimals use .filter() to create a new array of objects which contains only the animals with a population of less than 5.
 */
 
-function lowPopulationAnimals( /*Your Code Here*/ ) {
-    /*Your Code Here*/
-}
+const newAnimalFilter =
+    zooAnimals.filter(function(item) {
+        return item.population < 5;
+    })
 
+console.log(newAnimalFilter);
 
 /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
 The zoo needs to know their total animal population across the United States. 
@@ -105,9 +104,13 @@ Using USApop find the total population from the zoos array using the .reduce() m
 Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count.
 */
 
-function USApop( /*Your Code Here*/ ) {
-    /*Your Code Here*/
-}
+const USApop =
+    zooAnimals.reduce(function(accumulator, item) {
+        return accumulator + item.population;
+    }, 0);
+
+console.log('this is the total population ${USApop}');
+console.log(zooAnimals);
 
 
 // 🦁🦁🦁 Callbacks 🦁🦁🦁  
@@ -118,35 +121,54 @@ function USApop( /*Your Code Here*/ ) {
  * The consume function should return the invocation of cb, passing a and b into cb as arguments
  */
 
-function consume( /*Your Code Here */ ) {
-    /*Your Code Here */
+function consume(a, b, cd) {
+    return cb(a, b);
 }
+
+function cookiemonsterCb(a, b) {
+    return `Me love ${a} and ${b}`;
+}
+
+function cookieCb(a, b) {
+    return `Me love ${a} and ${b}`;
+}
+
+console.log(consume(chocolatechip, oatmealraison, cookiemonsterCb));
+console.log(consume(chocolatechip, oatmealraision, cookiecb));
 
 
 /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
 // 🦁🦁🦁 Use add to return the sum of two numbers 🦁🦁🦁
 
-function add( /*Your Code Here */ ) {
-    /*Your Code Here*/
-}
+
+function add(num1, num2) {
+    return (consume(2, 2, add));
+};
 
 // 🦁🦁🦁 Use multiply to return the product of two numbers 🦁🦁🦁
 
-function multiply( /*Your Code Here */ ) {
-    /*Your Code Here */
-}
+function multiply(num1, num2) {
+    return (consume(10, 16, multiply));
+};
 
 // 🦁🦁🦁 Use greeting to accept a first and last name and return "Hello {first-name} {last-name}, nice to meet you!" 🦁🦁🦁
 
-function greeting( /*Your Code Here */ ) {
-    return /*Your Code Here */
+const myObj = {
+    greeting: 'Hello',
+    first: 'Mary'
+    last: 'Poppins'
+    function name(greeting) {
+        console.log('${this.greeting} ${this.firstandlast}, nice to meet you!'));
+    console.log(consume("Mary", "Poppins", greeting));
 }
+};
+
 
 // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁 
 // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-// console.log(consume(2, 2, add)); // 4
-// console.log(consume(10, 16, multiply)); // 160
-// console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
+console.log(consume(2, 2, add)); // 4
+console.log(consume(10, 16, multiply)); // 160
+console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
 
 
 // 🦁💪 Stretch: If you haven't already, convert your array method callbacks into arrow functions - make sure you comment out this section before you submit your work 🦁💪
